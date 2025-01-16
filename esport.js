@@ -20,8 +20,8 @@ typeProprio.forEach(t => {
 
 function setFilter() {
   mapAPI.filterFeatures([
-    { layerId:3, attr: 'Type', op: 'contain', val: search.value, matchAll: true },
-    { layerId:3, attr: 'Type de propriétaire', op: 'contain', val: proprio.value, matchAll: true }
+    { layerId: 3, attr: 'Type', op: 'contain', val: search.value, matchAll: true },
+    { attr: 'Type de propriétaire', op: 'contain', val: proprio.value }
   ]);
 }
 
