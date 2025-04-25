@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>[Ma carte] Mayotte</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Les équipements sportifs à Mayotte." />
+  <meta name="keywords" content="" />
+
+  <link rel="icon" type="image/png" href="./img/logo.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
+  <link rel="apple-touch-icon" href="./img/logo.png">
+  <link rel="apple-touch-startup-image" href="./img/logo.png">
+
+  <meta name="format-detection" content="telephone=no"> 
+  <meta name="msapplication-tap-highlight" content="no">  
+
+  <!-- API -->
+  <script type="text/javascript" src="https://ignf.gitlab.io/macarte/mcviewer/MapIFrameAPI.js"></script>
+
+  <!-- Style -->
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 16px;
+    }
+    #menu {
+      position: fixed;
+      inset: 0;
+      bottom: unset;
+      height: 2em;
+      width: 100%;
+      font-size: 1.2em;
+      padding: .2em 0.5em;
+    }
+    #menu > * {
+      vertical-align: middle;
+      margin: 0;
+    }
+    #menu img {
+      margin-right: 1em;
+    }
+    #map {
+      position: fixed;
+      inset: 0;
+      top: 3em;
+      width: 100%;
+      height: calc(100% - 3em);
+      border: 0;
+      box-shadow: 0 0 3px #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="menu">
+    <img src="https://upload.wikimedia.org/wikipedia/fr/5/50/Bloc_Marianne.svg" style="float: left"/>
+    <h1>Saisie des ZICAD</h1>
+  </div>
+  <!-- Map div -->
+  <iframe id="map" src="https://macarte.ign.fr/carte/jexXHm/Campagne-ZICAD"></iframe>
+
+  <!-- script -->
+  <script type="text/javascript" src="./index.js"></script>
+
+</body>
