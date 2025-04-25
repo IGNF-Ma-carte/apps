@@ -5,5 +5,5 @@ MapIFrameAPI.ready('map', function(api) {
   mapAPI = api;
   // Afficher les layers dans la console
   api.getLayers(console.log)
-  api.addEditBar({ layerId: 10, tools: ['Select','DrawPolygon','Attributes','Delete','Export'] })
+  api.addEditBar({ layerId: 10, tools: ['Select','DrawPolygon','Attributes','Delete','Export','Import'] })
 })
