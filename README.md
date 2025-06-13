@@ -23,6 +23,16 @@ L'exemple utilise deux select pour choisir le type d'équipement et le propriét
 
 [Voir en ligne](https://ignf-ma-carte.github.io/apps/Mayotte/)
 
+
+## Shirka, raconte moi une histoire
+
+Test d'utilisation d'une IA pour faire intégrer un widget carte avec l'iFrame-API.
+
+L'exemple utilise un IA en "langage naturel" pour intégrer un widget cartographique et raconter une histoire sur une carte.
+
+[La liste des prompts utilisés](https://ignf-ma-carte.github.io/apps/Shirka/prompt.html)     
+[Le résultat](https://ignf-ma-carte.github.io/apps/Shirka/)
+
 ----
 
 ## Autres exemples : 
