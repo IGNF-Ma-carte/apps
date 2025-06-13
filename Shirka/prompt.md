@@ -1,17 +1,17 @@
 # Liste des prompts utilisés pour créer la narration
 
-J'ai utilis une IA pour générer une narration à partir d'une carte en utilisant l'iFramAPI de l'outil Macarte de l'IGN.    
-L'idée est double : tester les capacité de l'IA en codage d'une application web avec des composant que je développe et voir ce qu'on peut obtenir en mode non développeur, **en langage naturel**.
+J'ai utilisé une IA pour générer une narration à partir d'une carte en utilisant l'iFramAPI de l'outil Macarte de l'IGN.    
+L'idée est double : tester les capacités de l'IA en codage d'une application web avec des composants que je développe et voir ce qu'on peut obtenir en mode non développeur, **en langage naturel**.   
 Pour cela, j'ai utilisé Cursor.
 
 Le code source de l'API est disponible en Opensource dans le [code Github de l'outil IGN](https://github.com/IGNF-Ma-carte/mcviewer/tree/main/docs/doc), 
-il faudra l'indiquer à l'IA pour le contexte ou un lien vers le site de la [documentation en ligne de l'iFramAPI](https://ignf-ma-carte.github.io/mcviewer/doc/)
+il faudra l'indiquer à l'IA pour le contexte ou un lien vers le site de la [documentation en ligne de l'iFrame-API](https://ignf-ma-carte.github.io/mcviewer/doc/)
 
 ## prérequis
 
 L'iFrame-API proposé par l'outil Ma carte de l'IGN permet d'intégrer un widget d'une carte produite sur le site [Ma carte](https://macarte.ign.fr/) 
 sur votre site Web et de le contrôler à l'aide de JavaScript.    
-Cela nécessite d'avoir au préalable créé une carte sur le site, ici, nous utiliseront une carte de 
+Cela nécessite d'avoir au préalable créé une carte sur le site, ici, nous utiliserons une carte de 
 la [base mémoire photographique de la première guerre mondiale](https://data.culture.gouv.fr/explore/dataset/fonds-de-la-guerre-14-18-extrait-de-la-base-memoire/information/)
 dont je parlais [ici](https://www.linkedin.com/posts/jean-marc-viglino-87826b14b_storymap-activity-7337025542929481728-N7aR).    
 La carte est disponible ici : https://macarte.ign.fr/carte/hMUCH3/Memoire-14-18.
@@ -22,13 +22,13 @@ La carte est disponible ici : https://macarte.ign.fr/carte/hMUCH3/Memoire-14-18.
 La première étape est de voir si l'IA comprend bien de quoi on cause...
 
 > [!TIP]
-> Peux-tu créer une page pour afficher un widget carte avec la carte https://macarte.ign.fr/carte/hMUCH3/Memoire-14-18 via l'iFrameAPI
+> Peux-tu créer une page pour afficher un widget carte avec la carte https://macarte.ign.fr/carte/hMUCH3/Memoire-14-18 via l'iFrame-API
 
-Sans réel surprise, **ça marche pô !**
+Sans réelle surprise, **ça marche pô !**
 Il n'a visiblement pas compris où il fallait chercher...
 
 > [!TIP]
-> non, ce n'est pas cela, utilise les paragraphe "premier pas" de la documentation (doc/index.html) pour voir comment faire
+> non, ce n'est pas cela, utilise le paragraphe "premier pas" de la documentation (doc/index.html) pour voir comment faire
 
 ```
 Je vais consulter la documentation pour voir les "premiers pas" recommandés.
@@ -76,12 +76,12 @@ chercher et il faudra lui indiquer...
 Je lui demande aussi de retravailler la lisibilité du code, sinon, c'est plutôt clean et documenté.
 
 > [!TIP]
-> bien, peux-tu placer le code en dehors de la fonction ready en utilisant la variable mapAPI et changer le nom des variable avec des caractère grec φ et Δ par phi et delta    
+> bien, peux-tu placer le code en dehors de la fonction ready en utilisant la variable mapAPI et changer le nom des variables avec des caractères grecs φ et Δ par phi et delta    
 > modifie la fonction getNearestFeatures pour paramétrer le nombre d'objets qu'on veut récupérer et renvoie le résultat dans un callback
 
 > [!TIP]
-> Bien, ajoute maintenant un bouton à la page qui lance une fonction qui utilise getNearestFeatures pour récupérer les 10 feature les plus proche et qui centre
-la carte sur avec un delay de quelques secondes sur chacune d'elle à un zoom de 16
+> Bien, ajoute maintenant un bouton à la page qui lance une fonction qui utilise getNearestFeatures pour récupérer les 10 feature les plus proches et qui centre
+la carte sur avec un delay de quelques secondes sur chacune d'elles à un zoom de 16
 
 ```
 Les changements principaux sont :
@@ -97,7 +97,7 @@ Les changements principaux sont :
 
 Quand tu cliqueras sur le bouton, la carte se centrera automatiquement sur chaque feature avec un délai de 3 secondes entre chaque centrage.
 ```
-Parfait, il a bien trouvé les information dans la doc et les paramètres pour centrer la carte et ça ... **marche pô !**   
+Parfait, il a bien trouvé les informations dans la doc et les paramètres pour centrer la carte et ça ... **marche pô !**   
 mais bon, là c'est pas de sa faute, c'est la doc qui est fausse... je [corrige la doc](https://github.com/IGNF-Ma-carte/mcviewer/commit/7a01cba5f80f63142f0e00fc16d25b4d43166cd7)
 et on continue.
 
@@ -105,7 +105,8 @@ et on continue.
 > lors du déplacement, ne fait un envol (flyTo) que pour le premier objet, utilise moveTo pour les suivants)
 
 > [!TIP]
-> Maintenant affiche les informations de l'objet par dessus la carte, en particulier une image (property VIDEO-p) et une légende (property LEG)
+> Maintenant affiche les informations de l'objet par-dessus la carte, en particulier une image (property VIDEO-p) et une légende (property LEG)
+
  Plus compliqué là, il va falloir voir comment il s'en sort...
 
 ```
@@ -126,9 +127,9 @@ Pas mal ! mais il n'a pas compris que le contenu du popup doit être en Markdown
 Je vais modifier le code pour formater le contenu de la popup en Markdown plutôt qu'en HTML.
 ```
 
-Je vous passe la partie où je lui demande d'ajouter un titre, un compyright et autre information fournie par les objets.
+Je vous passe la partie où je lui demande d'ajouter un titre, un copyright et autre informations fournies par les objets.
 
-Je lui demande aussi de désactiver la carte pendans le parcours pour éviter que l'utilisateur ne bouge la carte. 
+Je lui demande aussi de désactiver la carte pendant le parcours pour éviter que l'utilisateur ne bouge la carte. 
 Il essaye une fonction de l'iFrameAPI qui n'existe pas pour se rabattre sur l'ajout d'une `div transparente qui se superpose à l'iframe`.
 
 ## Encore plus fort
