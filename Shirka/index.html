@@ -154,18 +154,15 @@
           if (commune) {
             dialog.close();
             // Centrer la carte sur la commune
-            /*
-            mapAPI.moveTo({
-              destination: commune.centre.coordinates,
-              zoom: 12,
-              type: 'flyTo'
+            mapAPI.setCenter({
+              center: commune.centre.coordinates,
+              zoom: 12
             });
-            */
             // Lancer le parcours après un court délai
             getNearestFeatures(10, function(nearest) {
               console.log('10 features les plus proches de', communeName, ':', nearest);
               centerOnFeatures(nearest);
-            });
+            }, 2000);
           } else {
             errorMessage.style.display = 'block';
           }
