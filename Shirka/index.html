@@ -125,6 +125,8 @@
       const errorMessage = document.getElementById('errorMessage');
       const loadingIndicator = document.getElementById('loadingIndicator');
 
+      dialog.showModal();
+
       // Modifiez la fonction searchCommune
       async function searchCommune(name) {
         try {
@@ -152,25 +154,24 @@
           if (commune) {
             dialog.close();
             // Centrer la carte sur la commune
+            /*
             mapAPI.moveTo({
               destination: commune.centre.coordinates,
               zoom: 12,
               type: 'flyTo'
             });
+            */
             // Lancer le parcours après un court délai
-            setTimeout(() => {
-              getNearestFeatures(10, function(nearest) {
-                console.log('10 features les plus proches de', communeName, ':', nearest);
-                centerOnFeatures(nearest);
-              });
-            }, 2000);
+            getNearestFeatures(10, function(nearest) {
+              console.log('10 features les plus proches de', communeName, ':', nearest);
+              centerOnFeatures(nearest);
+            });
           } else {
             errorMessage.style.display = 'block';
           }
         }
       }
-      handleSearch();
-
+      
       // Modifiez l'événement du bouton de recherche
       searchButton.addEventListener('click', handleSearch);
 
