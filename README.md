@@ -30,7 +30,7 @@ Test d'utilisation d'une IA pour faire intégrer un widget carte avec l'iFrame-A
 
 L'exemple utilise un IA en "langage naturel" pour intégrer un widget cartographique et raconter une histoire sur une carte.
 
-[La liste des prompts utilisés](https://ignf-ma-carte.github.io/apps/Shirka/prompt.html)     
+[La liste des prompts utilisés](https://github.com/IGNF-Ma-carte/apps/blob/main/Shirka/prompt.md)     
 [Le résultat](https://ignf-ma-carte.github.io/apps/Shirka/)
 
 ----
