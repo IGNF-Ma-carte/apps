@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>[Ma carte] RNB</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Les équipements sportifs à Mayotte." />
+  <meta name="keywords" content="" />
+
+  <link rel="icon" type="image/png" href="./img/logo.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
+  <link rel="apple-touch-icon" href="./img/logo.png">
+  <link rel="apple-touch-startup-image" href="./img/logo.png">
+
+  <meta name="format-detection" content="telephone=no"> 
+  <meta name="msapplication-tap-highlight" content="no">  
+
+  <!-- API -->
+  <script type="text/javascript" src="https://ignf.gitlab.io/macarte/mcviewer/MapIFrameAPI.js"></script>
+
+  <!-- Style -->
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #volet {
+      position: fixed;
+      inset: 0;
+      width: 20em;
+      height: 100%;
+      font-size: 1em;
+      padding: .2em 0.5em;
+    }
+    #volet input[type="search"] {
+      font-size: 1em;
+      padding: 0.5em;
+      width: calc(100% - 1em);
+      box-sizing: border-box;
+      margin-bottom: 1em;
+    }
+    #volet a {
+      padding: 0 0.5em;
+      display: block;
+    }
+    #map {
+      position: fixed;
+      inset: 0;
+      left: 20em;
+      width: calc(100% - 20em);
+      height: 100%;
+      border: 0;
+      box-shadow: 0 0 3px #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="volet">
+    <input type="search" placeholder="identifiant RNB" />
+    <ul class="result"></ul>
+    <a href="javascript:find('6NFTV4Z6DP92')">Batiment B</a>
+    <a href="javascript:find('479X42Y2YSP3')">Géoroom</a>
+  </div>
+  <!-- Map div -->
+  <iframe id="map" src="https://macarte.ign.fr/carte/X3Ki32/RNB"></iframe>
+
+  <!-- script -->
+  <script type="text/javascript" src="./rnb.js"></script>
+
+</body>
