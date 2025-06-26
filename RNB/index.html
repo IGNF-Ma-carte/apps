@@ -60,21 +60,30 @@
     }
     h3 {
       font-size: .9em;
-    line-height: 1.3em;
-    color: #0063cb;
-    margin-bottom: .2rem;
+      line-height: 1.3em;
+      color: #0063cb;
+      margin-bottom: .2rem;
     }
     ul {
       list-style: none;
       padding: 0;
-      background-color: #f5f5fe;
       margin: 0;
+    }
+    ul.result {
+      background-color: #f5f5fe;
     }
     ul:has(li) {
       padding: 1em 0.5em;
     }
-    ul li {
+    ul.result li {
       text-align: center;
+    }
+    .address ul {
+      margin: 0;
+      padding: 0;
+    }
+    .address ul li {
+      padding: 0.5em;
     }
     ul li a {
       text-decoration: none;

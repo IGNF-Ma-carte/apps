@@ -1,6 +1,7 @@
 const search = document.querySelector('#volet input[type="search"]')
 search.addEventListener('change', function(e) {
-  fetch('https://rnb-api.beta.gouv.fr/api/alpha/buildings/'+e.target.value+'/').then(resp => resp.json()).then(function(resp) {
+  fetch('https://rnb-api.beta.gouv.fr/api/alpha/buildings/'+e.target.value+'/')
+  .then(resp => resp.json()).then(function(resp) {
     mapAPI.setCenter({ center: resp.point.coordinates, zoom:18 })
     console.log('center', resp)
     setTimeout(function() {
@@ -11,6 +12,11 @@ search.addEventListener('change', function(e) {
         val: resp.rnb_id
       })
     }, 500)
+  }).catch(function() {
+    var ul = document.querySelector('.result')
+    ul.innerHTML = ''
+    var addr = document.querySelector('.address')
+    addr.innerHTML = '';
   })
 })
 
@@ -44,11 +50,14 @@ MapIFrameAPI.ready('map', function(api) {
       // search.value = f.properties.identifiants_rnb.split('/')[0];
       fetch('https://rnb-api.beta.gouv.fr/api/alpha/buildings/'+id+'/').then(resp => resp.json()).then(function(resp) {
         console.log(resp)
-        addr.innerHTML = '<h3>Adresses</h3>'
-        var li = document.createElement('p');
-        addr.appendChild(li)
+        addr.innerHTML = '<h3>Adresses</h3><ul></ul>'
+        var ul = addr.querySelector('ul')
         resp.addresses.forEach(a => {
-          li.innerHTML += a.street_number + ' ' +a.street + ' ' + a.city_zipcode + ' ' + a.city_name + '<br/>';
+          var li = document.createElement('li');
+          ul.appendChild(li)
+          li.innerHTML = a.street_number + ' ' +a.street 
+            + '<br/>' + a.city_zipcode + ' ' + a.city_name 
+            + '<br/>Clé BAN : ' + a.id;
         })
       })
     }
