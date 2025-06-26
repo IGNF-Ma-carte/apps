@@ -32,13 +32,13 @@
       height: 100%;
       font-size: 1em;
       padding: .2em 0.5em;
+      box-sizing: border-box;
     }
     #volet input[type="search"] {
       font-size: 1em;
       padding: 0.5em;
       width: calc(100% - 1em);
       box-sizing: border-box;
-      margin-bottom: 1em;
     }
     #volet a {
       padding: 0 0.5em;
@@ -53,14 +53,72 @@
       border: 0;
       box-shadow: 0 0 3px #000;
     }
+    h2 {
+      background-color: #f5f5fe;
+      padding: 0.5em;
+      margin-bottom: 0;
+    }
+    h3 {
+      font-size: .9em;
+    line-height: 1.3em;
+    color: #0063cb;
+    margin-bottom: .2rem;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      background-color: #f5f5fe;
+      margin: 0;
+    }
+    ul:has(li) {
+      padding: 1em 0.5em;
+    }
+    ul li {
+      text-align: center;
+    }
+    ul li a {
+      text-decoration: none;
+      text-align: center;
+      color: #333;
+      font-weight: bold;
+    }
+    p {
+      margin: 0;
+    }
+    .examples {
+      margin-top: 1em;
+      border-top: 1px solid #333;
+      padding: 1em 0;
+    }
+    button.copy {
+      border: 0;
+      background-color: #bccdff;
+      text-align: center;
+      display: block;
+      width: 100%;
+      padding: 0.5em;
+      font-size: 1em;
+      display: none;
+    }
+    ul:has(li) + button.copy {
+      display: block;
+    }
   </style>
 </head>
 <body>
   <div id="volet">
     <input type="search" placeholder="identifiant RNB" />
-    <ul class="result"></ul>
-    <a href="javascript:find('6NFTV4Z6DP92')">Batiment B</a>
-    <a href="javascript:find('479X42Y2YSP3')">Géoroom</a>
+    <h2>Bâtiment</h2>
+    <h3>
+      Identifiant RNB :
+    </h3>
+    <ul class="result">
+    </ul><button class="copy">Copier 📋</button>
+    <div class="address"></div>
+    <div class="examples">
+      <a href="javascript:find('6NFTV4Z6DP92')">Batiment B</a>
+      <a href="javascript:find('479X42Y2YSP3')">Géoroom</a>
+    </div>
   </div>
   <!-- Map div -->
   <iframe id="map" src="https://macarte.ign.fr/carte/X3Ki32/RNB"></iframe>

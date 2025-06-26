@@ -16,14 +16,17 @@ search.addEventListener('change', function(e) {
 
 /* Get mapAPI */
 var mapAPI;
+var data;
 MapIFrameAPI.ready('map', function(api) {
   // Récupération de l'API pour un accès global
   mapAPI = api;
-  // On a selectionner un objet
+  // On a selectionne un objet
   api.on('select', function(e) {
     var ul = document.querySelector('.result')
     ul.innerHTML = ''
     var f = e[0]
+    var addr = document.querySelector('.address')
+    addr.innerHTML = '';
     if (f) {
       var id = '';
       f.properties.identifiants_rnb.split('/').forEach(element => {
@@ -35,14 +38,17 @@ MapIFrameAPI.ready('map', function(api) {
         li.appendChild(a)
         id = element
       });
+      // To copy
+      data = id
+      console.log(id)
       // search.value = f.properties.identifiants_rnb.split('/')[0];
       fetch('https://rnb-api.beta.gouv.fr/api/alpha/buildings/'+id+'/').then(resp => resp.json()).then(function(resp) {
         console.log(resp)
-        var li = document.createElement('li');
-        ul.appendChild(li)
-        li.innerHTML = '<b>Adresses</b>'
+        addr.innerHTML = '<h3>Adresses</h3>'
+        var li = document.createElement('p');
+        addr.appendChild(li)
         resp.addresses.forEach(a => {
-          li.innerHTML += '<br/>' + a.street_number + ' ' +a.street + ' ' + a.city_zipcode + ' ' + a.city_name;
+          li.innerHTML += a.street_number + ' ' +a.street + ' ' + a.city_zipcode + ' ' + a.city_name + '<br/>';
         })
       })
     }
@@ -53,3 +59,9 @@ function find(x) {
   search.value = x;
   search.dispatchEvent(new Event('change'))
 }
+
+document.querySelector('button.copy').addEventListener('click', function() {
+  console.log(data)
+  navigator.clipboard.writeText(data);
+
+})
