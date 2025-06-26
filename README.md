@@ -24,6 +24,15 @@ L'exemple utilise deux select pour choisir le type d'équipement et le propriét
 [Voir en ligne](https://ignf-ma-carte.github.io/apps/Mayotte/)
 
 
+## RNB
+
+Affichage des bâtiments BDTopo et lien avec le [Référentiel National des Bâtiments](https://rnb.beta.gouv.fr/) (RNB).
+
+L'exemple utilise l'iFrame-API pour récupérer l'objet sélectionné et récupérer les informations du RNB via la [rnb-API](https://rnb-api.beta.gouv.fr/api/alpha/buildings/).
+Centrage de la carte via un numéro de RNB
+
+[Voir en ligne](https://ignf-ma-carte.github.io/apps/RNB/)
+
 ## Shirka, raconte moi une histoire
 
 Test d'utilisation d'une IA pour faire intégrer un widget carte avec l'iFrame-API.
