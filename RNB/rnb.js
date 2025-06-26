@@ -72,5 +72,8 @@ function find(x) {
 document.querySelector('button.copy').addEventListener('click', function() {
   console.log(data)
   navigator.clipboard.writeText(data);
-
+  document.body.dataset.copy = "1"
+  setTimeout(function() {
+    delete document.body.dataset.copy
+  }, 1500)
 })

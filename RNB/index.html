@@ -112,6 +112,20 @@
     ul:has(li) + button.copy {
       display: block;
     }
+    button.copy .copy {
+      display: none;
+    }
+    button.copy span {
+      display: inline-block;
+      width: 2em;
+    }
+    [data-copy] button.copy span {
+      display: none;
+    }
+    [data-copy] button.copy .copy {
+      display: inline-block;
+    }
+
   </style>
 </head>
 <body>
@@ -122,7 +136,7 @@
       Identifiant RNB :
     </h3>
     <ul class="result">
-    </ul><button class="copy">Copier 📋</button>
+    </ul><button class="copy">Copier <span>📋</span><span class="copy">✔️</span></button>
     <div class="address"></div>
     <div class="examples">
       <a href="javascript:find('6NFTV4Z6DP92')">Batiment B</a>
