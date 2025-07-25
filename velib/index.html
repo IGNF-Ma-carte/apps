@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>[Ma carte] Vélib'</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Campagne de saisie ZICAD - IGN - Ministère." />
+  <meta name="keywords" content="" />
+
+  <link rel="icon" type="image/png" href="./img/logo.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
+  <link rel="apple-touch-icon" href="./img/logo.png">
+  <link rel="apple-touch-startup-image" href="./img/logo.png">
+
+  <meta name="format-detection" content="telephone=no"> 
+  <meta name="msapplication-tap-highlight" content="no">  
+
+  <!-- API -->
+  <script type="text/javascript" src="https://ignf.gitlab.io/macarte/mcviewer/MapIFrameAPI.js"></script>
+
+  <!-- Style -->
+  <link rel="stylesheet" href="./stlye.css">
+   
+</head>
+<body>
+  <header>
+    <h1>🚴 Dashboard Velib'</h1>
+  </header>
+  <!-- Map div -->
+  <main>
+    <aside>
+      <h2>Filtres</h2>
+      <nav>
+        <ul>
+          <li>
+            Communes
+            <select id="filter-commune">
+            </select>
+          </li>
+          <li>
+            Type de vélo
+            <label><input type="radio" name="type" value="" checked="checked" />Tous</label>
+            <label><input type="radio" name="type" value="mechanical" />Mécaniques</label>
+            <label><input type="radio" name="type" value="ebike" />Electriques</label>
+          </li>
+          <li>
+            Places disponibles
+            <input class="dispo" type="range" min="0" max="50" value="0" list="values" />
+            <datalist id="values">
+              <option value="0" label="0"></option>
+              <option value="10" label="10"></option>
+              <option value="20" label="20"></option>
+              <option value="30" label="30"></option>
+              <option value="40" label="40"></option>
+              <option value="50" label="50"></option>
+            </datalist>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+    <section>
+      <aside>
+        <div data-attr="total"> Stations totals <span></span> </div>
+        <div data-attr="filtered"> Stations filtrées <span></span> </div>
+        <div data-attr="dispo"> Vélos disponibles <span></span> </div>
+        <div data-attr="tx"> Taux de remplissage <span></span> </div>
+      </aside>
+      <iframe id="map" src="https://macarte.ign.fr/carte/jafSEv/Velib?noTitle" allow="geolocation clipboard-read; clipboard-write"></iframe>
+    </section>
+  </main>
+  <footer>
+    Réalisé avec <a href="https://macarte.ign.fr/">macarte.ign.fr</a> - données &copy; <a href="https://opendata.paris.fr/">Paris | data</a>
+  </footer>
+
+  <!-- script -->
+  <script type="text/javascript" src="./index.js"></script>
+</body>
