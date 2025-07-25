@@ -37,6 +37,7 @@
           <li>
             Communes
             <select id="filter-commune">
+              <option value="">Ile de France</option>
             </select>
           </li>
           <li>
@@ -61,17 +62,24 @@
       </nav>
     </aside>
     <section>
-      <aside>
+      <div>
         <div data-attr="total"> Stations totals <span></span> </div>
         <div data-attr="filtered"> Stations filtrées <span></span> </div>
         <div data-attr="dispo"> Vélos disponibles <span></span> </div>
         <div data-attr="tx"> Taux de remplissage <span></span> </div>
-      </aside>
+      </div>
       <iframe id="map" src="https://macarte.ign.fr/carte/jafSEv/Velib?noTitle" allow="geolocation clipboard-read; clipboard-write"></iframe>
     </section>
   </main>
   <footer>
-    Réalisé avec <a href="https://macarte.ign.fr/">macarte.ign.fr</a> - données &copy; <a href="https://opendata.paris.fr/">Paris | data</a>
+    <button title="afficher les statistiques"></button>
+    <h2>📈 Analyse statistique</h2>
+    <div id="analyse">
+      <p>Répartition par communes</p>
+    </div>
+    <div class="copy">
+      Réalisé avec <a href="https://macarte.ign.fr/">macarte.ign.fr</a> - données &copy; <a href="https://opendata.paris.fr/">Paris | data</a>
+    </div>
   </footer>
 
   <!-- script -->

@@ -6,9 +6,11 @@ html, body {
   padding: 0;
   overflow: hidden;
   font-family: 'Trebuchet MS', sans-serif;
+  background-color: #f1f2f6;
+  color: #333;
 }
 a {
-  color: #333;
+  color: #000;
   background-color: #e1e2e6;
   padding: 0.2em 0.75em;
   border-radius: 5px;
@@ -18,6 +20,7 @@ header {
   padding: 1em 2em;
   z-index: 1;
   display: block;
+  background-color: #fff;
 }
 main {
   flex: 1;
@@ -31,13 +34,22 @@ header h1 {
 footer {
   text-align: right;
   padding: 0.5em 2em;
-  background-image: linear-gradient(20deg, transparent, #f1f2f6);
+  background-color: #f1f2f6;
+}
+footer h2 {
+  margin: 0 0 0.2em;
+  cursor: pointer;
+  text-align: center;
+}
+footer p {
+  margin: 0;
 }
 
 aside {
   padding: 0.5em 1em;
   display: block;
   background-color: #f1f2f6;
+  max-width: 40%;
 }
 section {
   flex: 1;
@@ -58,16 +70,16 @@ section {
   box-shadow: inset 0 0 5px #000;
 }
 
-section aside {
+section > div {
   flex: 1;
   display: flex;
   flex-direction: row;
 }
-section aside div {
+section > div div {
   flex: 25%;
   padding: 1em;
 }
-section aside div span {
+section > div div span {
   display: block;
   font-size: 1.5em;
   font-weight: bold;
@@ -118,9 +130,115 @@ datalist {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  user-select: none;
 }
 
 datalist option {
   text-align: center;
   min-width: 0.8em;
+}
+
+#analyse {
+  white-space: nowrap;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  margin-bottom: 6em;
+}
+footer[data-analys="false"] #analyse {
+  display: none;
+}
+
+#analyse > div {
+  display: inline-block;
+  width: 10px;
+  padding: 0 2px;
+  font-size: 5px;
+  cursor: pointer;
+  height: 180px;
+  max-height: 180px;
+  overflow: hidden;
+}
+#analyse > div:hover {
+  background-color: #e1e2e6;
+}
+
+#analyse > div > div {
+  background-color: #6793c8;
+  vertical-align: bottom;
+  display: inline-block;
+  width: 10px;
+}
+#analyse > div > div:first-child {
+  background-color: transparent;
+  height: 100%;
+  width: 0px;
+}
+
+#analyse > div:hover:before {
+  content: attr(aria-label);
+  position: absolute;
+  font-size: 3em;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: #fff;
+  padding: 0 .5em;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px #000;
+  z-index: 1;
+}
+#analyse > div:after {
+  content: attr(name);
+  font-size: 2.5em;
+  position: absolute;
+  bottom: 0;
+  transform: translate(-1em, 1em) rotate(-45deg) translateX(-100%);
+  transform-origin: 0 0;
+}
+#analyse > div:hover:after {
+  font-size: 3em;
+  z-index: 1;
+  background-color: #f1f2f6;
+  box-shadow: 0 0 5px #f1f2f6;
+  font-weight: bold;
+}
+
+footer .copy {
+  display: block;
+  z-index: 5;
+  background-color: #f1f2f6;
+  position: relative;
+}
+
+footer > button {
+  background: none;
+  border: 0;
+  width: 1.5em;
+  height: 1em;
+  cursor: pointer;
+  position: absolute;
+  left: 1em;
+}
+footer[data-analys="false"] button {
+  transform: rotate(-90deg);
+}
+footer > button:before {
+  content: "";
+  border: 0.75em solid transparent;
+  border-top-color: #6793c8;
+  border-bottom: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+footer[data-analys="false"] h2 {
+  text-align: left;
+  margin: -0.25em 0;
+  line-height: 1.2em;
+  overflow: visible;
+  height: 1em;
+  z-index: 10;
+  position: relative;
+  font-size: 1em;
 }

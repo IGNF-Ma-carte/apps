@@ -16,7 +16,46 @@ function start() {
     } else {
       stat.total = features.length;
       showstat(features)
+      analyse(features)
     }
+  })
+}
+
+function analyse(features) {
+  var stat = {}
+  features.forEach(f => {
+    var com = f.properties.nom_arrondissement_communes
+    if (!stat[com]) {
+      stat[com] = {
+        nb: 0,
+        capacity: 0,
+        numdocksavailable: 0,
+        numbikesavailable: 0,
+        mechanical: 0,
+        ebike: 0
+      }
+    }
+    stat[com].nb++;
+    ['capacity', 'numdocksavailable', 'numbikesavailable', 'mechanical', 'ebike'].forEach(k => {
+      stat[com][k] += f.properties[k]
+    })
+  })
+  
+  var alys = document.getElementById('analyse')
+  com.forEach(k => {
+    var bar = document.createElement('DIV')
+    // bar.style.height = stat[k].nb + 'em';
+    bar.setAttribute('aria-label', k + ' - ' + stat[k].nb + '')
+    bar.setAttribute('name', k)
+    bar.addEventListener('click', () => {
+      filter ('nom_arrondissement_communes', k)
+      document.getElementById('filter-commune').value = k
+    })
+    bar.appendChild(document.createElement('DIV'))
+    var bar2 = document.createElement('DIV')
+    bar2.style.height = stat[k].nb + 'em';
+    bar.appendChild(bar2)
+    alys.appendChild(bar)
   })
 }
 
@@ -102,7 +141,6 @@ var com = [
 ];
 com.sort();
 com.unshift("Paris")
-com.unshift('')
 
 var filterCommune = document.getElementById('filter-commune')
 com.forEach(c => {
@@ -137,3 +175,14 @@ document.querySelector('input.dispo').addEventListener('change', e => {
   }
   filter()
 })
+
+/* button */
+function toggleFooter() {
+  var alys = document.querySelector('footer')
+  alys.dataset.analys = alys.dataset.analys === 'false'
+}
+document.querySelector('footer > button').addEventListener('click', toggleFooter)
+document.querySelector('footer h2').addEventListener('click', toggleFooter)
+if (window.innerHeight < 600) {
+  document.querySelector('footer').dataset.analys = false
+}
