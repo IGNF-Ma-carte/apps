@@ -157,10 +157,12 @@ document.querySelectorAll('input[name="type"]').forEach(i => {
   i.addEventListener('change', e => {
     delete _filter.ebike
     delete _filter.mechanical
-    _filter[e.target.value] = {
-      attr: e.target.value,
-      op: '>',
-      val: 0
+    if (e.target.value) {
+      _filter[e.target.value] = {
+        attr: e.target.value,
+        op: '>',
+        val: 0
+      }
     }
     filter()
   })
@@ -170,7 +172,7 @@ document.querySelectorAll('input[name="type"]').forEach(i => {
 document.querySelector('input.dispo').addEventListener('change', e => {
   _filter['numdocksavailable'] = {
     attr: 'numdocksavailable',
-    op: '>',
+    op: '>=',
     val: e.target.value
   }
   filter()
