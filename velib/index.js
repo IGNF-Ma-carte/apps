@@ -1,3 +1,10 @@
+/* Commune list */
+var com = [
+  "Rosny-sous-Bois", "Noisy-le-Sec", "Bobigny", "Montreuil", "Romainville", "Pantin", "Bagnolet", "Les Lilas", "Fontenay-sous-Bois", "Vincennes", "Nogent-sur-Marne", "Saint-Mandé", "Joinville-le-Pont", "Champigny-sur-Marne", "Créteil", "Maisons-Alfort", "Saint-Maurice", "Alfortville", "Charenton-le-Pont", "Choisy-le-Roi", "Vitry-sur-Seine", "Aubervilliers", "Le Pré-Saint-Gervais", "La Courneuve", "Ivry-sur-Seine", "Saint-Denis", "Villejuif", "Saint-Ouen-sur-Seine", "Villeneuve-la-Garenne", "Clichy", "Gennevilliers", "Asnières-sur-Seine", "Levallois-Perret", "Bois-Colombes", "Colombes", "Argenteuil", "La Garenne-Colombes", "Neuilly-sur-Seine", "Courbevoie", "Nanterre", "Rueil-Malmaison", "Puteaux", "Suresnes", "Le Kremlin-Bicêtre", "Gentilly", "Chevilly-Larue", "Cachan", "Arcueil", "Montrouge", "Malakoff", "Bagneux", "Bourg-la-Reine", "Vanves", "Fontenay-aux-Roses", "Sceaux", "Châtillon", "Saint-Cloud", "Boulogne-Billancourt", "Garches", "Issy-les-Moulineaux", "Sèvres", "Clamart", "Ville-d'Avray", "Meudon", "Chaville"
+];
+com.sort();
+com.unshift("Paris")
+
 var mapAPI;
 
 MapIFrameAPI.ready('map', function(api) {
@@ -15,13 +22,13 @@ function start() {
       setTimeout(start, 500)
     } else {
       stat.total = features.length;
-      showstat(features)
-      analyse(features)
+      showStatistiques(features)
+      calcStatistiques(features)
     }
   })
 }
 
-function analyse(features) {
+function calcStatistiques(features) {
   var stat = {}
   features.forEach(f => {
     var com = f.properties.nom_arrondissement_communes
@@ -61,7 +68,7 @@ function analyse(features) {
 
 /* Calcul / affichage des stats
  */
-function showstat(features) {
+function showStatistiques(features) {
   stat.filtered = features.length;
   stat.dispo = 0;
   stat.capacity = 0;
@@ -79,6 +86,10 @@ function showstat(features) {
 
 /* Filter features */
 var _filter = {}
+/** Filter
+ * @param {string} what
+ * @param {*} value
+ */
 function filter(what, value) {
   // Update filter
   if (what) {
@@ -97,13 +108,14 @@ function filter(what, value) {
   // Filter feature
   var filt = Object.values(_filter)
   if (!filt.length) filt = { layerId: 3 }
+  console.log('filter', filt)
   mapAPI.getFeatures(filt, features => {
     mapAPI.addLayerFeatures({ 
       id: 5, 
       features: features, 
       clear: true
     })
-    showstat(features)
+    showStatistiques(features)
   })
   // Show layer
   mapAPI.setLayer({ id: 3, visible: false })
@@ -136,12 +148,6 @@ function filter(what, value) {
 }
 
 /* Filter / commune */
-var com = [
-  "Rosny-sous-Bois", "Noisy-le-Sec", "Bobigny", "Montreuil", "Romainville", "Pantin", "Bagnolet", "Les Lilas", "Fontenay-sous-Bois", "Vincennes", "Nogent-sur-Marne", "Saint-Mandé", "Joinville-le-Pont", "Champigny-sur-Marne", "Créteil", "Maisons-Alfort", "Saint-Maurice", "Alfortville", "Charenton-le-Pont", "Choisy-le-Roi", "Vitry-sur-Seine", "Aubervilliers", "Le Pré-Saint-Gervais", "La Courneuve", "Ivry-sur-Seine", "Saint-Denis", "Villejuif", "Saint-Ouen-sur-Seine", "Villeneuve-la-Garenne", "Clichy", "Gennevilliers", "Asnières-sur-Seine", "Levallois-Perret", "Bois-Colombes", "Colombes", "Argenteuil", "La Garenne-Colombes", "Neuilly-sur-Seine", "Courbevoie", "Nanterre", "Rueil-Malmaison", "Puteaux", "Suresnes", "Le Kremlin-Bicêtre", "Gentilly", "Chevilly-Larue", "Cachan", "Arcueil", "Montrouge", "Malakoff", "Bagneux", "Bourg-la-Reine", "Vanves", "Fontenay-aux-Roses", "Sceaux", "Châtillon", "Saint-Cloud", "Boulogne-Billancourt", "Garches", "Issy-les-Moulineaux", "Sèvres", "Clamart", "Ville-d'Avray", "Meudon", "Chaville"
-];
-com.sort();
-com.unshift("Paris")
-
 var filterCommune = document.getElementById('filter-commune')
 com.forEach(c => {
   var o = document.createElement('option')
@@ -153,6 +159,7 @@ filterCommune.addEventListener('change', e => {
   filter ('nom_arrondissement_communes', e.target.value)
 })
 
+/* Filter on featype type */
 document.querySelectorAll('input[name="type"]').forEach(i => {
   i.addEventListener('change', e => {
     delete _filter.ebike
@@ -178,7 +185,7 @@ document.querySelector('input.dispo').addEventListener('change', e => {
   filter()
 })
 
-/* button */
+/* Footer button / toggle */
 function toggleFooter() {
   var alys = document.querySelector('footer')
   alys.dataset.analys = alys.dataset.analys === 'false'
