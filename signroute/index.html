@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <title>[Ma carte] ZICAD</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="Campagne de saisie ZICAD - IGN - Ministère." />
+  <meta name="keywords" content="" />
+
+  <link rel="icon" type="image/png" href="./img/logo.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="translucent-black">
+  <link rel="apple-touch-icon" href="./img/logo.png">
+  <link rel="apple-touch-startup-image" href="./img/logo.png">
+
+  <meta name="format-detection" content="telephone=no"> 
+  <meta name="msapplication-tap-highlight" content="no">  
+
+  <!-- API -->
+  <script type="text/javascript" src="https://ignf.gitlab.io/macarte/mcviewer/MapIFrameAPI.js"></script>
+
+  <!-- Style -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <img src="https://upload.wikimedia.org/wikipedia/fr/5/50/Bloc_Marianne.svg" style="float: left"/>
+    <h1>Signal'route</h1>
+    <a href="./Macarte propositions ZICAD - ministères.pdf" target="_new" title="voir l'aide...">?</a>
+  </header>
+  <main>
+    <aside>
+      <h2>Sélectionnez des objets 🢂</h2>
+      <div class="result">
+        <p></p>
+        <ul></ul>
+      </div>
+      <button>📧 Envoyer</button>
+    </aside>
+    <section>
+      <!-- Map div -->
+      <iframe id="map" src="https://macarte.ign.fr/carte/8tNscK/Routier" allow="geolocation clipboard-read; clipboard-write"></iframe>
+    </section>
+  </main> 
+
+  <!-- script -->
+  <script type="text/javascript" src="./index.js"></script>
+
+</body>
