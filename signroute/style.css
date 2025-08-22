@@ -103,13 +103,13 @@ aside .bubble:after {
 }
 aside .bubble:before {
   border-left-color: rgba(0,0,0,0.5);
-  border-width: 16px 0 16px 12px;
+  border-width: 14.5px 0 14.5px 12px;
   margin: 1px;
-  filter: blur(2px);
+  filter: blur(1px);
   z-index: 0;
 }
 
-aside .bubble  p {
+aside .bubble p {
   margin: 0;
   text-align: right;
   font-style: italic;

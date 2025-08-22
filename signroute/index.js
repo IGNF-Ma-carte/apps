@@ -24,6 +24,26 @@ MapIFrameAPI.ready('map', function(api) {
       })
     })
   })
+  mapAPI.layout({ css: `
+    .ol-control {
+      color: #333!important;
+      background: transparent!important;
+    }
+    .ol-bar {
+      background: transparent!important;
+    }
+    .ol-search > input {
+      font-size: 1.5em!important;
+    }
+    .ol-control button{
+      font-size: 1.5em!important;
+      background: #eee!important;
+      color: #333!important;
+    }
+    .ol-layerswitcher button {
+      font-size: 2em!important;
+    }
+    `})
 })
 
 // Show info message in aside
