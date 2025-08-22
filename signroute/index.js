@@ -5,6 +5,7 @@ let current = [];
  Wait for MapIFrameAPI to be ready and map to be loaded  
 */
 MapIFrameAPI.ready('map', function(api) {
+  window.mapAPI = api; // For debug
   // Do something on selection
   api.on('select', function(features) {
     // Store current features

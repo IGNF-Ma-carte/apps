@@ -170,6 +170,8 @@ aside .info.ok {
 
 dialog {
   min-width: 15em;
+  max-width: calc(100% - 2em);
+  box-sizing: border-box;
 }
 
 dialog button,
@@ -203,13 +205,13 @@ dialog button:first-of-type {
 
 dialog h2 {
   background-color: #ccc;
-  margin: -1rem -1rem 1em;
+  margin: -1rem -1rem 0;
   padding: 0.5em 1em;
 }
 
 dialog > div {
-  max-height: calc(100dvh - 14em);
+  max-height: calc(100dvh - 16em);
   overflow-y: auto;
-  padding-bottom: 1em;
+  padding: 1em 0;
   border-bottom: 1px solid #ddd;
 }
