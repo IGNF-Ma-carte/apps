@@ -17,16 +17,19 @@ header a {
   position: absolute;
   right: 0;
   top: 0;
-  margin: 0.25em 0.5em;
-  background: #369;
+  margin: 0.1em 0.5em;
+  background: #000091;
   color: #fff;
   text-align: center;
   text-decoration: none;
   border-radius: 50%;
-  width: 2em;
-  padding: 0.5em 0;
-  height: 2em;
   box-sizing: border-box;
+  font-weight: bold;
+  font-size: 1.5em;
+  line-height: 1em;
+  width: 1.4em;
+  height: 1.4em;
+  padding: 0.2em;
 }
 header img {
   margin-right: 1em;
@@ -71,8 +74,55 @@ section iframe {
 }
 
 aside h2 {
+  position: relative;
   font-size: 1.2em;
-  margin-bottom: 0.5em;
+  text-align: right;
+  padding: 0;
+  margin: 0 0 0.25em 0;
+}
+aside .bubble {
+  position: relative;
+  background-color: #ddd;
+  border-radius: 0.5rem;
+  margin-bottom: 1em; 
+  padding: 0.5em 1em;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+  z-index: 1;
+}
+aside .bubble:before,
+aside .bubble:after {
+  content: "";
+  position: absolute;
+  border: 0 solid transparent;
+  border-left-color: #ddd;
+  margin: -2px -4px;
+  border-width: 19px 0 19px 16px;
+  top: 30%;
+  left: 100%;
+  transform: translateY(-30%);
+}
+aside .bubble:before {
+  border-left-color: rgba(0,0,0,0.5);
+  border-width: 16px 0 16px 12px;
+  margin: 1px;
+  filter: blur(2px);
+  z-index: 0;
+}
+
+aside .bubble  p {
+  margin: 0;
+  text-align: right;
+  font-style: italic;
+}
+kbd {
+  display: inline-block;
+  padding: 0.1em 0.4em;
+  font-size: 0.9em;
+  color: #333;
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb;
 }
 
 aside button {
@@ -118,6 +168,10 @@ aside .info.ok {
   background-color: #e0f8e9;
 }
 
+dialog {
+  min-width: 15em;
+}
+
 dialog button,
 dialog a {
   display: block;
@@ -135,15 +189,16 @@ dialog a {
   box-sizing: border-box;
 }
 dialog button {
+  float: right;
   margin: .25em 0;
   background-color: #fff;
   color: #4CAF50;
   border: 2px solid #4CAF50;
   width: calc(50% - 0.5em);
-  display: inline-block;
+  margin-right: 1em;
 }
 dialog button:first-of-type {
-  margin-right: 1em;
+  margin-right: 0;
 }
 
 dialog h2 {

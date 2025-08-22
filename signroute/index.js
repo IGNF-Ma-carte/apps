@@ -86,9 +86,17 @@ document.querySelector('dialog button.copy').addEventListener('click', b => {
 
 // Close button in dialog
 document.querySelectorAll('dialog button').forEach(b => {
-  b.addEventListener('click', function() {
-    document.querySelector('dialog').close(); 
+  b.addEventListener('click', e => {
+    console.log(e)
+    e.target.closest('dialog').close(); 
   })
+})
+
+// Help button
+document.querySelector('header a').addEventListener('click', function(e) {
+  e.preventDefault();
+  const dlg = document.querySelector('dialog[data-action="help"]')
+  dlg.showModal();
 })
 
 // Utility to create an element with options

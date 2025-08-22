@@ -27,11 +27,16 @@
   <header>
     <img src="https://upload.wikimedia.org/wikipedia/fr/5/50/Bloc_Marianne.svg" style="float: left"/>
     <h1>Signal'route</h1>
-    <a href="./Macarte propositions ZICAD - ministères.pdf" target="_new" title="voir l'aide...">?</a>
+    <a href="#" title="voir l'aide...">?</a>
   </header>
   <main>
     <aside>
-      <h2>Sélectionnez des objets 🢂</h2>
+      <div class="bubble">
+        <h2>Sélectionnez des objets</h2>
+        <p>
+          Utilisez la touche <kbd>shift</kbd> pour sélectionner plusieurs objets
+        </p>
+      </div>
       <div class="result">
         <p></p>
         <ul></ul>
@@ -45,13 +50,23 @@
     </section>
   </main> 
 
-  <dialog>
+  <dialog data-action="send">
     <h2>Envoyer un mail</h2>
     <div></div>
     <a>📧 Envoyer</a>
-    <button class="copy">
+    <button class="cancel">
+      Annuler
+    </button><button class="copy">
       Copier
-    </button><button class="cancel">
+    </button>
+  </dialog>
+
+  <dialog data-action="help">
+    <h2>Signal'route</h2>
+    <div>
+      blablabla...
+    </div>
+    <button class="cancel">
       Annuler
     </button>
   </dialog>
