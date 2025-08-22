@@ -36,6 +36,32 @@ function showInfo(info, className) {
   }, 5000);
 }
 
+// Download button
+document.querySelector('aside button.dload').addEventListener('click', function() {
+  if(!current.length) {
+    showInfo('Aucun tronçon sélectionné', 'error');
+    return;
+  }
+  // Create GeoJSON blob
+  const geojson = {
+    type: "FeatureCollection",
+    features: current
+  }
+  const blob = new Blob([JSON.stringify(geojson, null, 2)], {type : 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = createElement('A', {
+    href: url,
+    download: 'troncons-signales.geojson'
+  });
+  // Download file
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  // Show message
+  showInfo('Fichier téléchargé !', 'ok');
+});
+
 // Send mail button
 document.querySelector('aside button.send').addEventListener('click', function() {
   // Get department from first feature
@@ -63,7 +89,7 @@ document.querySelector('aside button.send').addEventListener('click', function()
     const mailto = 'mailto:contact' + dep + '@ign.fr?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body + bodyDetails);
     // Open mailto link ?
     // window.location.href = mailto;  
-    const dlg = document.querySelector('dialog')
+    const dlg = document.querySelector('dialog[data-action="mailto"]')
     // Show dialog with mailto link and content to copy
     dlg.querySelector('div').innerHTML = 
       '<b>Objet : </b>' + subject +'<hr/>'
