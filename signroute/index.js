@@ -24,10 +24,23 @@ MapIFrameAPI.ready('map', function(api) {
   })
 })
 
+
+function showInfo(info, className) {
+  const infoDiv = document.querySelector('aside .info')
+  infoDiv.innerHTML = info;
+  infoDiv.className = (className || 'note') + ' info';
+  setTimeout(() => {
+    infoDiv.innerHTML = '';
+  }, 5000);
+}
+
 document.querySelector('aside button.send').addEventListener('click', function() {
   // Get department from first feature
   const f = current[0];
-  if(!f) return;
+  if(!f) {
+    showInfo('Aucun tronçon sélectionné', 'error');
+    return;
+  }
   const pt = f.geometry.coordinates[0];
   const url = 'https://geo.api.gouv.fr/communes?lon=' + pt[0].toFixed(3) + '&lat=' + pt[1].toFixed(3);
   fetch(url).then(r => r.json()).then(data => {
@@ -58,11 +71,9 @@ document.querySelector('dialog button.copy').addEventListener('click', b => {
   const dlg = document.querySelector('dialog')
   const text = dlg.querySelector('div').innerText;
   navigator.clipboard.writeText(text).then(() => {
-    document.querySelector('aside .info').innerHTML = 'Contenu copié dans le presse-papier !';
-    setTimeout(() => {
-      document.querySelector('aside .info').innerHTML = '';
-    }, 5000);
+    showInfo('Contenu copié dans le presse-papier !', 'ok');
   }).catch(err => {
+    showInfo('Erreur lors de la copie : ' + err, 'error');
   });
 });
 
