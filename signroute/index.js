@@ -29,6 +29,12 @@ MapIFrameAPI.ready('map', function(api) {
       color: #333!important;
       background: transparent!important;
     }
+    .ol-control.ol-legend {
+      background: #fff!important;
+    }
+    .ol-control.ol-legend.ol-collapsed {
+      background: transparent!important;
+    }
     .ol-bar {
       background: transparent!important;
     }
